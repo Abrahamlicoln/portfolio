@@ -291,6 +291,29 @@
         #mobile-menu-button:hover {
             transform: rotate(90deg);
         }
+        
+        /* Mobile hero buttons */
+        @media (max-width: 640px) {
+            .hero-buttons-mobile a {
+                width: 100%;
+                margin-bottom: 0.75rem;
+                padding: 0.875rem 1.5rem;
+                font-weight: 500;
+                letter-spacing: 0.025em;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transform: translateY(0);
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+            }
+            
+            .hero-buttons-mobile a:active {
+                transform: translateY(2px);
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            
+            .hero-buttons-mobile a:last-child {
+                margin-bottom: 0;
+            }
+        }
     </style>
 </head>
 <body class="font-sans">
@@ -350,14 +373,14 @@
                     <p class="text-gray-300 text-lg mb-8 max-w-lg hero-text-animation hero-text-delay-3">
                         Building scalable, maintainable, and user-friendly applications with expertise in PHP, Laravel, JavaScript, and more.
                     </p>
-                    <div class="flex space-x-4 hero-text-animation hero-text-delay-4">
-                        <a href="#contact" class="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 inline-flex items-center glow">
+                    <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 hero-text-animation hero-text-delay-4 hero-buttons-mobile">
+                        <a href="#contact" class="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 inline-flex items-center justify-center glow">
                             <i class="fas fa-envelope mr-2"></i> Contact Me
                         </a>
-                        <a href="#projects" class="bg-darkgray hover:bg-darkgray/80 border border-primary/30 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 inline-flex items-center">
+                        <a href="#projects" class="bg-darkgray hover:bg-darkgray/80 border border-primary/30 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 inline-flex items-center justify-center">
                             <i class="fas fa-project-diagram mr-2"></i> View Projects
                         </a>
-                        <a href="Joseph-Abraham-Dangana-Resume.pdf" target="_blank" class="bg-darkgray hover:bg-darkgray/80 border border-primary/30 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 inline-flex items-center">
+                        <a href="Joseph-Abraham-Dangana-Resume.pdf" download class="bg-darkgray hover:bg-darkgray/80 border border-primary/30 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 inline-flex items-center justify-center">
                             <i class="fas fa-download mr-2"></i> Download Resume
                         </a>
                     </div>
@@ -1188,7 +1211,7 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <a href="#" class="fixed bottom-6 right-6 w-12 h-12 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300 glow" style="transition: opacity 0.3s ease, visibility 0.3s ease;">
+    <a href="#" class="fixed bottom-6 right-6 w-12 h-12 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300 glow z-[100]" style="transition: opacity 0.3s ease, visibility 0.3s ease;">
         <i class="fas fa-arrow-up"></i>
     </a>
 
