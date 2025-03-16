@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joseph Abraham Dangana | Full Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0f0f0f',
+                        darker: '#050505',
+                        primary: '#ff6b00',
+                        secondary: '#ff9d00',
+                        accent: '#ffb700',
+                        darkgray: '#1a1a1a'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            background-color: #0f0f0f;
+            color: #f8f8f8;
+            overflow-x: hidden;
+        }
+        
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #ff6b00 0%, #ffb700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(255, 107, 0, 0.1) 0%, rgba(255, 183, 0, 0.1) 100%);
+        }
+        
+        .gradient-border {
+            position: relative;
+        }
+        
+        .gradient-border::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(135deg, #ff6b00 0%, #ffb700 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 0 30px rgba(255, 107, 0, 0.3);
+        }
+        
+        .skill-pill {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-pill:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 107, 0, 0.4);
+        }
+        
+        .glow {
+            box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
+        }
+        
+        .timeline-dot {
+            box-shadow: 0 0 0 5px rgba(255, 107, 0, 0.2);
+        }
+        
+        .glass-effect {
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .animate-pulse-slow {
+            animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .animate-pulse-glow {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+            100% { opacity: 0.5; transform: scale(1); }
+        }
+        
+        .gradient-animator {
+            background: linear-gradient(270deg, #ff6b00, #ff9d00, #ffb700);
+            background-size: 600% 600%;
+            animation: gradient-animation 8s ease infinite;
+            opacity: 0.2;
+            mix-blend-mode: overlay;
+        }
+        
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* New animations for sections */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .fade-in-up.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .fade-in-right.appear {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .fade-in-left.appear {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .scale-in.appear {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        
+        .stagger-item.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .hero-text-animation {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroTextIn 1s forwards;
+        }
+        
+        @keyframes heroTextIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-text-delay-1 {
+            animation-delay: 0.3s;
+        }
+        
+        .hero-text-delay-2 {
+            animation-delay: 0.6s;
+        }
+        
+        .hero-text-delay-3 {
+            animation-delay: 0.9s;
+        }
+        
+        .hero-text-delay-4 {
+            animation-delay: 1.2s;
+        }
+        
+        .section-heading {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #ff6b00 0%, #ffb700 100%);
+            transition: width 1.5s ease;
+        }
+        
+        .section-heading.appear::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navigation -->
+    <nav class="glass-effect text-white shadow-lg fixed w-full z-10">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-2xl font-bold tracking-tight">
+                    <span class="gradient-text">Joseph Abraham Dangana</span>
+                </a>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="hover:text-primary transition-colors">About</a>
+                    <a href="#skills" class="hover:text-primary transition-colors">Skills</a>
+                    <a href="#projects" class="hover:text-primary transition-colors">Projects</a>
+                    <a href="#experience" class="hover:text-primary transition-colors">Experience</a>
+                    <a href="#education" class="hover:text-primary transition-colors">Education</a>
+                    <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
+                </div>
+                
+                <button class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="min-h-screen flex items-center pt-20 pb-20 relative overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+                        <span class="gradient-text hero-text-animation hero-text-delay-1">Full Stack Developer</span>
+                        <span class="text-white block mt-2 hero-text-animation hero-text-delay-2">& Software Engineer</span>
+                    </h1>
+                    <h2 class="text-xl md:text-2xl font-medium text-gray-300 mb-6 hero-text-animation hero-text-delay-3">
+                        Crafting exceptional digital experiences
+                    </h2>
+                    <p class="text-gray-300 text-lg mb-8 max-w-lg hero-text-animation hero-text-delay-3">
+                        Building scalable, maintainable, and user-friendly applications with expertise in PHP, Laravel, JavaScript, and more.
+                    </p>
+                    <div class="flex space-x-4 hero-text-animation hero-text-delay-4">
+                        <a href="#contact" class="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 inline-flex items-center glow">
+                            <i class="fas fa-envelope mr-2"></i> Contact Me
+                        </a>
+                        <a href="#projects" class="bg-darkgray hover:bg-darkgray/80 border border-primary/30 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 inline-flex items-center">
+                            <i class="fas fa-project-diagram mr-2"></i> View Projects
+                        </a>
+                        <a href="Joseph-Abraham-Dangana-Resume.pdf" target="_blank" class="bg-darkgray hover:bg-darkgray/80 border border-primary/30 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 inline-flex items-center">
+                            <i class="fas fa-download mr-2"></i> Download Resume
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center relative">
+                    <!-- Glowing background card -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-3xl filter blur-xl"></div>
+                    
+                    <!-- Floating tech icons with improved animations -->
+                    <div class="absolute inset-0 z-10">
+                        <!-- PHP Icon -->
+                        <div class="absolute top-10 left-0 animate-pulse transform transition-all duration-3000 hover:scale-110" 
+                             style="animation: float 8s ease-in-out infinite; animation-delay: 0s;">
+                            <div class="bg-darkgray/80 p-4 rounded-xl shadow-lg backdrop-blur-sm border border-primary/30 
+                                        transition-all duration-500 hover:border-primary/60 hover:shadow-primary/20">
+                                <i class="fab fa-php text-4xl text-primary"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Laravel Icon -->
+                        <div class="absolute top-1/4 right-0 transform transition-all duration-3000 hover:scale-110"
+                             style="animation: float 7s ease-in-out infinite; animation-delay: 1.5s;">
+                            <div class="bg-darkgray/80 p-4 rounded-xl shadow-lg backdrop-blur-sm border border-primary/30
+                                        transition-all duration-500 hover:border-primary/60 hover:shadow-primary/20">
+                                <i class="fab fa-laravel text-4xl text-primary"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- JavaScript Icon -->
+                        <div class="absolute bottom-1/4 left-0 transform transition-all duration-3000 hover:scale-110"
+                             style="animation: float 6s ease-in-out infinite; animation-delay: 1s;">
+                            <div class="bg-darkgray/80 p-4 rounded-xl shadow-lg backdrop-blur-sm border border-primary/30
+                                        transition-all duration-500 hover:border-primary/60 hover:shadow-primary/20">
+                                <i class="fab fa-js text-4xl text-primary"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- MySQL Icon -->
+                        <div class="absolute bottom-20 right-10 transform transition-all duration-3000 hover:scale-110"
+                             style="animation: float 9s ease-in-out infinite; animation-delay: 2s;">
+                            <div class="bg-darkgray/80 p-4 rounded-xl shadow-lg backdrop-blur-sm border border-primary/30
+                                        transition-all duration-500 hover:border-primary/60 hover:shadow-primary/20">
+                                <i class="fas fa-database text-4xl text-primary"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Git Icon - Adding an additional icon -->
+                        <div class="absolute top-1/3 left-1/4 transform transition-all duration-3000 hover:scale-110"
+                             style="animation: float 8.5s ease-in-out infinite; animation-delay: 0.5s;">
+                            <div class="bg-darkgray/80 p-4 rounded-xl shadow-lg backdrop-blur-sm border border-primary/30
+                                        transition-all duration-500 hover:border-primary/60 hover:shadow-primary/20">
+                                <i class="fab fa-git-alt text-4xl text-primary"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Image container with higher z-index -->
+                    <div class="relative z-20">
+                        <img src="pix.png" alt="Joseph Abraham Dangana" class="w-96 h-96 md:w-[500px] md:h-[500px] object-cover object-center rounded-3xl shadow-xl">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/40 to-transparent rounded-3xl"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-white/50 hover:text-white">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-darker relative">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">About Me</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+                    I'm a passionate Full Stack Developer with expertise in building scalable web applications and systems. 
+                    With a strong foundation in both front-end and back-end technologies, I create solutions that are not only 
+                    functional but also user-friendly and maintainable.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-darkgray p-8 rounded-xl gradient-border hover:shadow-lg transition-shadow stagger-item">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-laptop-code text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Full Stack Development</h3>
+                    <p class="text-gray-300">
+                        Proficient in both front-end and back-end technologies, creating seamless, end-to-end solutions.
+                    </p>
+                </div>
+                
+                <div class="bg-darkgray p-8 rounded-xl gradient-border hover:shadow-lg transition-shadow stagger-item">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-database text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Database Design</h3>
+                    <p class="text-gray-300">
+                        Experienced in designing efficient database structures using MySQL, MongoDB, SQLite, and Supabase.
+                    </p>
+                </div>
+                
+                <div class="bg-darkgray p-8 rounded-xl gradient-border hover:shadow-lg transition-shadow stagger-item">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-robot text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">AI & IoT Integration</h3>
+                    <p class="text-gray-300">
+                        Building innovative solutions that leverage AI and IoT technologies for real-world applications.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-dark relative">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Technical Skills</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+                    My technical toolkit includes a wide range of programming languages, frameworks, and technologies.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="fade-in-right">
+                    <h3 class="text-xl font-semibold mb-6 flex items-center text-white">
+                        <i class="fas fa-server text-primary mr-3"></i> Back-End Development
+                    </h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill bg-darkgray px-4 py-2 rounded-full shadow-sm border border-primary/30 transition-all duration-300 text-white stagger-item">PHP</span>
+                        <span class="skill-pill bg-darkgray px-4 py-2 rounded-full shadow-sm border border-primary/30 transition-all duration-300 text-white stagger-item">Laravel</span>
+                        <span class="skill-pill bg-darkgray px-4 py-2 rounded-full shadow-sm border border-primary/30 transition-all duration-300 text-white stagger-item">Node.js</span>
+                        <span class="skill-pill bg-darkgray px-4 py-2 rounded-full shadow-sm border border-primary/30 transition-all duration-300 text-white stagger-item">VB.NET</span>
+                        <span class="skill-pill bg-darkgray px-4 py-2 rounded-full shadow-sm border border-primary/30 transition-all duration-300 text-white stagger-item">Arduino</span>
+                    </div>
+                </div>
+                
+                <div class="fade-in-left">
+                    <h3 class="text-xl font-semibold mb-6 flex items-center text-white">
+                        <i class="fas fa-laptop text-primary mr-3"></i> Front-End Development
+                    </h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill bg-darkgray px-4 py-2 rounded-full shadow-sm border border-primary/30 transition-all duration-300 text-white stagger-item">HTML5</span>
+                        <span class="skill-pill bg-darkgray px-4 py-2 rounded-full shadow-sm border border-primary/30 transition-all duration-300 text-white stagger-item">CSS3</span>
+                        <span class="skill-pill bg-darkgray px-4 py-2 rounded-full shadow-sm border border-primary/30 transition-all duration-300 text-white stagger-item">JavaScript</span>
+                        <span class="skill-pill bg-darkgray px-4 py-2 rounded-full shadow-sm border border-primary/30 transition-all duration-300 text-white stagger-item">Bootstrap</span>
+                        <span class="skill-pill bg-darkgray px-4 py-2 rounded-full shadow-sm border border-primary/30 transition-all duration-300 text-white stagger-item">TailwindCSS</span>
+                        <span class="skill-pill bg-darkgray px-4 py-2 rounded-full shadow-sm border border-primary/30 transition-all duration-300 text-white stagger-item">jQuery</span>
+                        <span class="skill-pill bg-darkgray px-4 py-2 rounded-full shadow-sm border border-primary/30 transition-all duration-300 text-white stagger-item">React.JS</span>
+                    </div>
+                </div>
+                
+                <div class="fade-in-right">
+                    <h3 class="text-xl font-semibold mb-6 flex items-center text-white">
+                        <i class="fas fa-database text-primary mr-3"></i> Databases
+                    </h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill bg-darkgray px-4 py-2 rounded-full shadow-sm border border-primary/30 transition-all duration-300 text-white stagger-item">MySQL</span>
+                        <span class="skill-pill bg-darkgray px-4 py-2 rounded-full shadow-sm border border-primary/30 transition-all duration-300 text-white stagger-item">MongoDB</span>
+                        <span class="skill-pill bg-darkgray px-4 py-2 rounded-full shadow-sm border border-primary/30 transition-all duration-300 text-white stagger-item">SQLite</span>
+                        <span class="skill-pill bg-darkgray px-4 py-2 rounded-full shadow-sm border border-primary/30 transition-all duration-300 text-white stagger-item">Supabase</span>
+                    </div>
+                </div>
+                
+                <div class="fade-in-left">
+                    <h3 class="text-xl font-semibold mb-6 flex items-center text-white">
+                        <i class="fas fa-code-branch text-primary mr-3"></i> Version Control & Collaboration
+                    </h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill bg-darkgray px-4 py-2 rounded-full shadow-sm border border-primary/30 transition-all duration-300 text-white stagger-item">Git</span>
+                        <span class="skill-pill bg-darkgray px-4 py-2 rounded-full shadow-sm border border-primary/30 transition-all duration-300 text-white stagger-item">GitHub</span>
+                        <span class="skill-pill bg-darkgray px-4 py-2 rounded-full shadow-sm border border-primary/30 transition-all duration-300 text-white stagger-item">RESTful APIs</span>
+                        <span class="skill-pill bg-darkgray px-4 py-2 rounded-full shadow-sm border border-primary/30 transition-all duration-300 text-white stagger-item">Web Services</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Learning Section -->
+    <section class="py-20 bg-darker relative">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text ">Future Learning</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+                    Technologies and languages I'm excited to learn and master in the near future.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- C# -->
+                <div class="bg-darkgray p-6 rounded-xl gradient-border hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 scale-in">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary rounded-lg flex items-center justify-center mb-4 mx-auto">
+                        <i class="fab fa-microsoft text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-white text-center">C#</h3>
+                    <p class="text-gray-300 text-center">
+                        Expanding into .NET ecosystem for robust enterprise applications.
+                    </p>
+                </div>
+                
+                <!-- Advanced Node.js -->
+                <div class="bg-darkgray p-6 rounded-xl gradient-border hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 scale-in" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary rounded-lg flex items-center justify-center mb-4 mx-auto">
+                        <i class="fab fa-node-js text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-white text-center">Advanced Node.js</h3>
+                    <p class="text-gray-300 text-center">
+                        Mastering asynchronous patterns and microservices architecture.
+                    </p>
+                </div>
+                
+                <!-- Advanced Docker -->
+                <div class="bg-darkgray p-6 rounded-xl gradient-border hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 scale-in" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary rounded-lg flex items-center justify-center mb-4 mx-auto">
+                        <i class="fab fa-docker text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-white text-center">Advanced Docker</h3>
+                    <p class="text-gray-300 text-center">
+                        Containerization and orchestration for scalable applications.
+                    </p>
+                </div>
+                
+                <!-- Advanced Redis -->
+                <div class="bg-darkgray p-6 rounded-xl gradient-border hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 scale-in" style="transition-delay: 300ms;">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary rounded-lg flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-database text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-white text-center">Advanced Redis</h3>
+                    <p class="text-gray-300 text-center">
+                        In-memory data structure store for caching and real-time applications.
+                    </p>
+                </div>
+                
+                <!-- Flutter -->
+                <div class="bg-darkgray p-6 rounded-xl gradient-border hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 scale-in" style="transition-delay: 400ms;">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary rounded-lg flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-mobile-alt text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-white text-center">Flutter</h3>
+                    <p class="text-gray-300 text-center">
+                        Cross-platform mobile app development with beautiful UI capabilities.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-darker relative">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Featured Projects</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+                    A showcase of my most significant projects, demonstrating my technical skills and problem-solving abilities.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-darkgray rounded-xl overflow-hidden shadow-md gradient-border">
+                    <div class="h-48 bg-gradient-to-r from-primary/20 to-secondary/20 flex items-center justify-center">
+                        <i class="fas fa-tasks text-primary text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-white">CATAI Tracka</h3>
+                            <span class="text-xs font-medium bg-primary/20 text-primary py-1 px-2 rounded">2024</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            A customized project management tool that automated workflows and improved team collaboration.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">PHP</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">Laravel</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">Bootstrap</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">MySQL</span>
+                        </div>
+                        <a href="https://cataitracka.com" target="_blank" class="text-primary hover:text-secondary font-medium inline-flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-darkgray rounded-xl overflow-hidden shadow-md gradient-border">
+                    <div class="h-48 bg-gradient-to-r from-primary/20 to-secondary/20 flex items-center justify-center">
+                        <i class="fas fa-leaf text-primary text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-white">AI Plant Identification</h3>
+                            <span class="text-xs font-medium bg-primary/20 text-primary py-1 px-2 rounded">2024</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            An AI-powered system for identifying Nigerian plants using CNNs and NLP for traditional names and uses.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">React.JS</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">AI</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">Machine Learning</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">PHP</span>
+                        </div>
+                        <a href="https://plantid-omega.vercel.app/" target="_blank" class="text-primary hover:text-secondary font-medium inline-flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-darkgray rounded-xl overflow-hidden shadow-md gradient-border">
+                    <div class="h-48 bg-gradient-to-r from-primary/20 to-secondary/20 flex items-center justify-center">
+                        <i class="fas fa-home text-primary text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-white">Smart Home Automation</h3>
+                            <span class="text-xs font-medium bg-primary/20 text-primary py-1 px-2 rounded">2024</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            A smart home light automation system using IoT devices for improved energy efficiency and convenience.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">IoT</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">Arduino</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">Home Automation</span>
+                        </div>
+                        <a href="https://smarthome-theta-opal.vercel.app/" target="_blank" class="text-primary hover:text-secondary font-medium inline-flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card bg-darkgray rounded-xl overflow-hidden shadow-md gradient-border">
+                    <div class="h-48 bg-gradient-to-r from-primary/20 to-secondary/20 flex items-center justify-center">
+                        <i class="fas fa-exchange-alt text-primary text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-white">Global Service API</h3>
+                            <span class="text-xs font-medium bg-primary/20 text-primary py-1 px-2 rounded">2024</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            A RESTful API for standardized data communication between front-end and back-end systems.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">Laravel</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">MySQL</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">RESTful</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">Postman</span>
+                        </div>
+                        <a href="https://globalservicesguppa.com/" target="_blank" class="text-primary hover:text-secondary font-medium inline-flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="project-card bg-darkgray rounded-xl overflow-hidden shadow-md gradient-border">
+                    <div class="h-48 bg-gradient-to-r from-primary/20 to-secondary/20 flex items-center justify-center">
+                        <i class="fas fa-user-graduate text-primary text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-white">SIWES Management System</h3>
+                            <span class="text-xs font-medium bg-primary/20 text-primary py-1 px-2 rounded">2023</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            A comprehensive system for managing student industrial work experience, automating workflows.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">PHP</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">Laravel</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">Bootstrap</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">MySQL</span>
+                        </div>
+                        <a href="https://siwes.nsuk.edu.ng/" target="_blank" class="text-primary hover:text-secondary font-medium inline-flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="project-card bg-darkgray rounded-xl overflow-hidden shadow-md gradient-border">
+                    <div class="h-48 bg-gradient-to-r from-primary/20 to-secondary/20 flex items-center justify-center">
+                        <i class="fas fa-clipboard-check text-primary text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-white">Attendance Management</h3>
+                            <span class="text-xs font-medium bg-primary/20 text-primary py-1 px-2 rounded">2023</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            A staff attendance management system for the Entrepreneur Development Centre at NSUK.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">PHP</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">Bootstrap</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">jQuery</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">MySQL</span>
+                        </div>
+                        <a href="https://attendance.nsukedc.com/" target="_blank" class="text-primary hover:text-secondary font-medium inline-flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project for Content Skills Academy LMS -->
+                <div class="project-card bg-darkgray rounded-xl overflow-hidden shadow-md gradient-border">
+                    <div class="h-48 bg-gradient-to-r from-primary/20 to-secondary/20 flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-primary text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-white">Content Skills Academy LMS</h3>
+                            <span class="text-xs font-medium bg-primary/20 text-primary py-1 px-2 rounded">
+                                2023
+                            </span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            A comprehensive Learning Management System for Content Skills Academy, featuring role-based access for administrators, staff, and students.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">PHP</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">MySQL</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">JavaScript</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">TailwindCSS</span>
+                        </div>
+                        <a href="https://contentskillsacademy.com/" target="_blank" class="text-primary hover:text-secondary font-medium inline-flex items-center modal-trigger">
+                            View Details <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-dark relative">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Professional Experience</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+                    My journey as a developer, showcasing my professional growth and achievements.
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Experience for Content Skills Academy LMS -->
+                <div class="relative pl-8 pb-12 border-l-2 border-primary/50 experience-card opacity-0 translate-y-10 transition-all duration-1000 ease-out">
+                    <div class="absolute -left-3 top-0 w-6 h-6 bg-primary rounded-full timeline-dot"></div>
+                    <div class="bg-darkgray p-6 rounded-lg shadow-md gradient-border">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <h3 class="text-xl font-bold text-white">Content Skills Academy</h3>
+                            <div class="flex items-center mt-2 md:mt-0">
+                                <span class="text-sm font-medium bg-primary/20 text-primary py-1 px-3 rounded-full">
+                                    February 2025 - March 2025
+                                </span>
+                            </div>
+                        </div>
+                        <h4 class="text-lg font-medium text-primary mb-3">Full Stack Developer</h4>
+                        <ul class="list-disc pl-5 text-gray-300 space-y-2">
+                            <li>The institution needed a comprehensive Learning Management System to centralize educational content delivery, student management, and administrative operations.</li>
+                            <li>Developed a robust LMS with role-based access control for administrators, staff, and students, featuring tailored dashboards and functionality for each user type.</li>
+                            <li>Implemented secure authentication, content management tools, assessment systems, and analytics dashboards to streamline educational processes.</li>
+                            <li>The system resulted in a 50% reduction in administrative workload and a 30% increase in student engagement with learning materials.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">PHP</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">Laravel</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">MySQL</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">JavaScript</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">TailwindCSS</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Experience 1 -->
+                <div class="relative pl-8 pb-12 border-l-2 border-primary/50 experience-card opacity-0 translate-y-10 transition-all duration-1000 ease-out" style="transition-delay: 200ms;">
+                    <div class="absolute -left-3 top-0 w-6 h-6 bg-primary rounded-full timeline-dot"></div>
+                    <div class="bg-darkgray p-6 rounded-lg shadow-md gradient-border">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <h3 class="text-xl font-bold text-white">CATAI Tracka Project Management Tool</h3>
+                            <div class="flex items-center mt-2 md:mt-0">
+                                <span class="text-sm font-medium bg-primary/20 text-primary py-1 px-3 rounded-full">
+                                    May 2024 - August 2024
+                                </span>
+                            </div>
+                        </div>
+                        <h4 class="text-lg font-medium text-primary mb-3">Full Stack Developer</h4>
+                        <ul class="list-disc pl-5 text-gray-300 space-y-2">
+                            <li>Manual processes and lack of customization in existing project management tools led to inefficiencies in task management and team coordination.</li>
+                            <li>Developing a scalable, maintainable, and user-friendly application tailored to specific organizational needs.</li>
+                            <li>Created a customized project management tool that automated workflows and improved team collaboration.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">PHP</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">Laravel</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">Bootstrap</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Experience 2 -->
+                <div class="relative pl-8 pb-12 border-l-2 border-primary/50 experience-card opacity-0 translate-y-10 transition-all duration-1000 ease-out" style="transition-delay: 400ms;">
+                    <div class="absolute -left-3 top-0 w-6 h-6 bg-primary rounded-full timeline-dot"></div>
+                    <div class="bg-darkgray p-6 rounded-lg shadow-md gradient-border">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <h3 class="text-xl font-bold text-white">Global Service Guppa</h3>
+                            <div class="flex items-center mt-2 md:mt-0">
+                                <span class="text-sm font-medium bg-primary/20 text-primary py-1 px-3 rounded-full">
+                                    June 2024 - July 2024
+                                </span>
+                            </div>
+                        </div>
+                        <h4 class="text-lg font-medium text-primary mb-3">Backend Developer</h4>
+                        <ul class="list-disc pl-5 text-gray-300 space-y-2">
+                            <li>The existing system lacked a standardized interface for seamless communication between the front-end and back-end, leading to inefficiencies and difficulties in data management.</li>
+                            <li>Designing and implementing a RESTful API that ensures secure, efficient, and scalable data exchange between the front-end and back-end systems.</li>
+                            <li>Collaborated with the back-end team to develop a RESTful API using PHP and Laravel, enabling standardized data communication and improving system efficiency.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">Laravel</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">MySQL</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">RESTful</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">Postman</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Experience 3 -->
+                <div class="relative pl-8 pb-12 border-l-2 border-primary/50 experience-card opacity-0 translate-y-10 transition-all duration-1000 ease-out" style="transition-delay: 600ms;">
+                    <div class="absolute -left-3 top-0 w-6 h-6 bg-primary rounded-full timeline-dot"></div>
+                    <div class="bg-darkgray p-6 rounded-lg shadow-md gradient-border">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <h3 class="text-xl font-bold text-white">SIWES Management System</h3>
+                            <div class="flex items-center mt-2 md:mt-0">
+                                <span class="text-sm font-medium bg-primary/20 text-primary py-1 px-3 rounded-full">
+                                    June 2023 - November 2023
+                                </span>
+                            </div>
+                        </div>
+                        <h4 class="text-lg font-medium text-primary mb-3">Full Stack Developer</h4>
+                        <ul class="list-disc pl-5 text-gray-300 space-y-2">
+                            <li>Manual processes in existing SIWES management systems led to inefficiencies in student industrial work experience tracking and reporting.</li>
+                            <li>Developing a scalable, maintainable, and user-friendly system tailored to the specific needs of Nasarawa State University, Keffi.</li>
+                            <li>Designed and implemented a comprehensive SIWES Management System using PHP, Laravel, Bootstrap, jQuery, and MySQL, automating workflows and improving data management.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">PHP</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">Laravel</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">Bootstrap</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Experience 4 -->
+                <div class="relative pl-8 pb-12 border-l-2 border-primary/50 experience-card opacity-0 translate-y-10 transition-all duration-1000 ease-out" style="transition-delay: 800ms;">
+                    <div class="absolute -left-3 top-0 w-6 h-6 bg-primary rounded-full timeline-dot"></div>
+                    <div class="bg-darkgray p-6 rounded-lg shadow-md gradient-border">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <h3 class="text-xl font-bold text-white">Attendance Management System</h3>
+                            <div class="flex items-center mt-2 md:mt-0">
+                                <span class="text-sm font-medium bg-primary/20 text-primary py-1 px-3 rounded-full">
+                                    June 2023 - November 2023
+                                </span>
+                            </div>
+                        </div>
+                        <h4 class="text-lg font-medium text-primary mb-3">Full Stack Developer</h4>
+                        <ul class="list-disc pl-5 text-gray-300 space-y-2">
+                            <li>Identified inefficiencies in existing manual staff attendance tracking systems, leading to challenges in monitoring employee participation and attendance reporting.</li>
+                            <li>Developed a scalable, maintainable, and user-friendly staff attendance management system tailored to the specific needs of the Entrepreneur Development Centre at Nasarawa State University, Keffi.</li>
+                            <li>Designed and implemented a comprehensive Staff Attendance Management System using PHP, Bootstrap, jQuery, and MySQL, automating workflows and improving data management.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">PHP</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">Bootstrap</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">jQuery</span>
+                            <span class="text-xs bg-dark text-gray-300 py-1 px-2 rounded">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Awards Section -->
+    <section id="education" class="py-20 bg-darker relative">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Education & Awards</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+                    My academic background and recognition for excellence.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div>
+                    <h3 class="text-xl font-semibold mb-6 flex items-center text-white">
+                        <i class="fas fa-graduation-cap text-primary mr-3"></i> Education
+                    </h3>
+                    <div class="bg-darkgray p-6 rounded-lg shadow-md gradient-border">
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="text-lg font-bold text-white">Nasarawa State University, Keffi</h4>
+                            <span class="text-sm font-medium bg-primary/20 text-primary py-1 px-2 rounded">
+                                September 2024
+                            </span>
+                        </div>
+                        <p class="text-primary font-medium mb-2">B.Sc Computer Science</p>
+                        <p class="text-white mb-4">CGPA: <span class="text-primary font-semibold">4.63/5.0</span></p>
+                        <p class="text-gray-300">
+                            Completed a comprehensive computer science program with a focus on software development, 
+                            database management, and system design.
+                        </p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-6 flex items-center text-white">
+                        <i class="fas fa-award text-primary mr-3"></i> Honours & Awards
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="bg-darkgray p-6 rounded-lg shadow-md gradient-border">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="text-lg font-bold text-white">Chevron Scholarship</h4>
+                                <span class="text-sm font-medium bg-primary/20 text-primary py-1 px-2 rounded">
+                                    August 2022
+                                </span>
+                            </div>
+                            <p class="text-gray-300">
+                                Awarded for excellence as an outstanding student across Nigerian universities.
+                            </p>
+                        </div>
+                        
+                        <div class="bg-darkgray p-6 rounded-lg shadow-md gradient-border">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="text-lg font-bold text-white">Academic Excellence Award</h4>
+                                <span class="text-sm font-medium bg-primary/20 text-primary py-1 px-2 rounded">
+                                    November 2024
+                                </span>
+                            </div>
+                            <p class="text-gray-300">
+                                Recognized as the best graduating student in the department and the entire faculty.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-dark relative">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Get In Touch</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+                    Interested in working together? Feel free to reach out for collaborations or just a friendly chat.
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div>
+                    <h3 class="text-xl font-semibold mb-6 text-white">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium mb-1 text-white">Email</h4>
+                                <p class="text-gray-300">abrahamdjoseph12@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-phone text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium mb-1 text-white">Phone</h4>
+                                <p class="text-gray-300">+234 070 16409 616</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium mb-1 text-white">Location</h4>
+                                <p class="text-gray-300">Abuja, Nigeria</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10">
+                        <h3 class="text-xl font-semibold mb-6 text-white">Connect With Me</h3>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/Abrahamlicoln" target="_blank" class="w-12 h-12 bg-gradient-to-r from-primary/20 to-secondary/20 hover:from-primary/30 hover:to-secondary/30 rounded-full flex items-center justify-center transition-all duration-300 glow">
+                                <i class="fab fa-github text-primary"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/abraham-joseph-736375181/" target="_blank" class="w-12 h-12 bg-gradient-to-r from-primary/20 to-secondary/20 hover:from-primary/30 hover:to-secondary/30 rounded-full flex items-center justify-center transition-all duration-300 glow">
+                                <i class="fab fa-linkedin-in text-primary"></i>
+                            </a>
+                            <a href="https://twitter.com/Abrahamlicoln" target="_blank" class="w-12 h-12 bg-gradient-to-r from-primary/20 to-secondary/20 hover:from-primary/30 hover:to-secondary/30 rounded-full flex items-center justify-center transition-all duration-300 glow">
+                                <i class="fab fa-twitter text-primary"></i>
+                            </a>
+                            <a href="https://www.instagram.com/abrahamlicoln/" target="_blank" class="w-12 h-12 bg-gradient-to-r from-primary/20 to-secondary/20 hover:from-primary/30 hover:to-secondary/30 rounded-full flex items-center justify-center transition-all duration-300 glow">
+                                <i class="fab fa-instagram text-primary"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-6 text-white">Send Me a Message</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium mb-2 text-white">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 bg-darkgray border border-primary/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 text-white" placeholder="Your Name">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium mb-2 text-white">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 bg-darkgray border border-primary/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 text-white" placeholder="Your Email">
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-sm font-medium mb-2 text-white">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 bg-darkgray border border-primary/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 text-white" placeholder="Subject">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium mb-2 text-white">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 bg-darkgray border border-primary/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 text-white" placeholder="Your Message"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 glow">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interests Section -->
+    <section class="py-16 bg-darker relative">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Personal Interests</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-6">
+                <div class="flex items-center bg-darkgray px-6 py-4 rounded-full shadow-md gradient-border">
+                    <i class="fas fa-plane-departure text-primary mr-3"></i>
+                    <span class="font-medium text-white">Travelling</span>
+                </div>
+                
+                <div class="flex items-center bg-darkgray px-6 py-4 rounded-full shadow-md gradient-border">
+                    <i class="fas fa-dumbbell text-primary mr-3"></i>
+                    <span class="font-medium text-white">Fitness</span>
+                </div>
+                
+                <div class="flex items-center bg-darkgray px-6 py-4 rounded-full shadow-md gradient-border">
+                    <i class="fas fa-code text-primary mr-3"></i>
+                    <span class="font-medium text-white">Coding</span>
+                </div>
+                
+                <div class="flex items-center bg-darkgray px-6 py-4 rounded-full shadow-md gradient-border">
+                    <i class="fas fa-brain text-primary mr-3"></i>
+                    <span class="font-medium text-white">Self-empowerment</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-10 relative">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold tracking-tight gradient-text">Joseph Abraham Dangana</a>
+                    <p class="text-gray-400 mt-2">Full Stack Developer & Software Engineer</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="https://github.com/Abrahamlicoln" target="_blank" class="text-gray-400 hover:text-primary transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/abraham-joseph-736375181/" target="_blank" class="text-gray-400 hover:text-primary transition-colors">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400">© 2024 Joseph Abraham Dangana. All rights reserved.</p>
+                
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="fixed bottom-6 right-6 w-12 h-12 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300 glow" style="transition: opacity 0.3s ease, visibility 0.3s ease;">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        // Particles.js configuration
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS("particles-js", {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#ff6b00"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 2,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#ff9d00",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 2,
+                        "direction": "none",
+                        "random": true,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": true,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "bubble": {
+                            "distance": 400,
+                            "size": 40,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 200,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+
+            // Experience section scroll animations
+            const experienceCards = document.querySelectorAll('.experience-card');
+            const fadeElements = document.querySelectorAll('.fade-in-up, .fade-in-right, .fade-in-left, .scale-in');
+            const staggerItems = document.querySelectorAll('.stagger-item');
+            const sectionHeadings = document.querySelectorAll('.section-heading');
+            
+            // Function to check if an element is in viewport
+            const isInViewport = (element, offset = 0.85) => {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * offset
+                );
+            };
+            
+            // Function to handle scroll animation
+            const handleScrollAnimation = () => {
+                // Experience cards animation
+                experienceCards.forEach(card => {
+                    if (isInViewport(card)) {
+                        card.classList.add('opacity-100');
+                        card.classList.remove('translate-y-10');
+                    }
+                });
+                
+                // Fade animations
+                fadeElements.forEach(element => {
+                    if (isInViewport(element)) {
+                        element.classList.add('appear');
+                    }
+                });
+                
+                // Section headings animation
+                sectionHeadings.forEach(heading => {
+                    if (isInViewport(heading, 0.9)) {
+                        heading.classList.add('appear');
+                    }
+                });
+                
+                // Stagger items animation with delay
+                staggerItems.forEach((item, index) => {
+                    if (isInViewport(item)) {
+                        setTimeout(() => {
+                            item.classList.add('appear');
+                        }, index * 50); // 50ms delay between each item
+                    }
+                });
+            };
+            
+            // Initial check on page load
+            setTimeout(handleScrollAnimation, 100);
+            
+            // Check on scroll
+            window.addEventListener('scroll', handleScrollAnimation);
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    // Special case for back to top button
+                    if (this.getAttribute('href') === '#') {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        document.querySelector(this.getAttribute('href')).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Show/hide back to top button based on scroll position
+            const backToTopButton = document.querySelector('.fixed.bottom-6.right-6');
+            
+            // Initially hide the button
+            backToTopButton.style.opacity = '0';
+            backToTopButton.style.visibility = 'hidden';
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.style.opacity = '1';
+                    backToTopButton.style.visibility = 'visible';
+                } else {
+                    backToTopButton.style.opacity = '0';
+                    backToTopButton.style.visibility = 'hidden';
+                }
+            });
+            
+            // Mobile menu toggle
+            const mobileMenuButton = document.querySelector('button.md\\:hidden');
+            const mobileMenu = document.querySelector('.md\\:flex.space-x-8');
+            
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Modal functionality
+            document.addEventListener('DOMContentLoaded', function() {
+                const modalTriggers = document.querySelectorAll('.modal-trigger');
+                const modalCloses = document.querySelectorAll('.modal-close');
+                
+                modalTriggers.forEach(trigger => {
+                    trigger.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const modalId = this.getAttribute('href');
+                        document.querySelector(modalId).classList.remove('hidden');
+                        document.body.classList.add('overflow-hidden');
+                    });
+                });
+                
+                modalCloses.forEach(close => {
+                    close.addEventListener('click', function() {
+                        this.closest('.fixed').classList.add('hidden');
+                        document.body.classList.remove('overflow-hidden');
+                    });
+                });
+                
+                // Close modal when clicking outside content
+                document.querySelectorAll('.fixed').forEach(modal => {
+                    modal.addEventListener('click', function(e) {
+                        if (e.target === this) {
+                            this.classList.add('hidden');
+                            document.body.classList.remove('overflow-hidden');
+                        }
+                    });
+                });
+                
+                // Close modal with Escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape') {
+                        document.querySelectorAll('.fixed').forEach(modal => {
+                            modal.classList.add('hidden');
+                        });
+                        document.body.classList.remove('overflow-hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
