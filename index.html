@@ -253,6 +253,44 @@
         .section-heading.appear::after {
             width: 100%;
         }
+        
+        /* Mobile menu styles */
+        #mobile-menu {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 107, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        #mobile-menu a {
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #mobile-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #ff6b00 0%, #ffb700 100%);
+            transition: width 0.3s ease;
+        }
+        
+        #mobile-menu a:hover::after {
+            width: 100%;
+        }
+        
+        #mobile-menu-button {
+            transition: transform 0.3s ease;
+        }
+        
+        #mobile-menu-button:hover {
+            transform: rotate(90deg);
+        }
     </style>
 </head>
 <body class="font-sans">
@@ -267,6 +305,7 @@
                     <span class="gradient-text">Joseph Abraham Dangana</span>
                 </a>
                 
+                <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8">
                     <a href="#about" class="hover:text-primary transition-colors">About</a>
                     <a href="#skills" class="hover:text-primary transition-colors">Skills</a>
@@ -276,9 +315,22 @@
                     <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
                 </div>
                 
-                <button class="md:hidden text-white focus:outline-none">
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
+            </div>
+            
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobile-menu" class="md:hidden hidden bg-darkgray rounded-lg mt-2 shadow-lg overflow-hidden transition-all duration-300 transform origin-top scale-95 opacity-0">
+                <div class="flex flex-col py-2">
+                    <a href="#about" class="px-4 py-3 hover:bg-primary/20 transition-colors border-b border-gray-700">About</a>
+                    <a href="#skills" class="px-4 py-3 hover:bg-primary/20 transition-colors border-b border-gray-700">Skills</a>
+                    <a href="#projects" class="px-4 py-3 hover:bg-primary/20 transition-colors border-b border-gray-700">Projects</a>
+                    <a href="#experience" class="px-4 py-3 hover:bg-primary/20 transition-colors border-b border-gray-700">Experience</a>
+                    <a href="#education" class="px-4 py-3 hover:bg-primary/20 transition-colors border-b border-gray-700">Education</a>
+                    <a href="#contact" class="px-4 py-3 hover:bg-primary/20 transition-colors">Contact</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -1341,11 +1393,36 @@
             });
             
             // Mobile menu toggle
-            const mobileMenuButton = document.querySelector('button.md\\:hidden');
-            const mobileMenu = document.querySelector('.md\\:flex.space-x-8');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
             
             mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
+                if (mobileMenu.classList.contains('hidden')) {
+                    // Show menu
+                    mobileMenu.classList.remove('hidden');
+                    setTimeout(() => {
+                        mobileMenu.classList.remove('scale-95', 'opacity-0');
+                        mobileMenu.classList.add('scale-100', 'opacity-100');
+                    }, 10);
+                } else {
+                    // Hide menu
+                    mobileMenu.classList.remove('scale-100', 'opacity-100');
+                    mobileMenu.classList.add('scale-95', 'opacity-0');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+                }
+            });
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('scale-100', 'opacity-100');
+                    mobileMenu.classList.add('scale-95', 'opacity-0');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+                });
             });
 
             // Modal functionality
